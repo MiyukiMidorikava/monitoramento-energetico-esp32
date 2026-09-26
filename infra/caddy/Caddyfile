@@ -1,0 +1,33 @@
+# Deployment pending: legacy OTA clients do not send X-API-Key.
+# Coordinate the firmware transition before replacing the live gateway.
+{$PUBLIC_DOMAIN} {
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        -Server
+    }
+
+    # Rota exclusiva para telemetria do ESP32 (Flask)
+    handle /telemetria* {
+        reverse_proxy flask-api:5000 {
+            header_up X-Forwarded-For {remote_host}
+        }
+    }
+
+    # Firmware OTA: arquivo estatico servido direto pelo Caddy
+    handle_path /firmware/* {
+        forward_auth flask-api:5000 {
+            uri /firmware-auth
+        }
+        header Cache-Control "private, no-store"
+        root * /srv/firmware
+        file_server
+    }
+
+    # Todas as outras rotas (painel do Grafana)
+    handle {
+        reverse_proxy grafana:3000
+    }
+}

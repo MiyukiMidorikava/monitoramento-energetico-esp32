@@ -1,0 +1,41 @@
+# Credenciais e configuração local
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+keys/
+# Build, ambientes e dados locais
+build/
+managed_components/
+sdkconfig
+sdkconfig.old
+dependencies.lock
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.bin
+*.sig
+*.elf
+*.map
+*.o
+*.a
+*.log
+**/influxdb3/data/
+# Documentos pessoais e configurações de editor
+*.pdf
+*.zip
+*.csv
+!partitions.csv
+*.jsonl
+relatorios/
+excluir/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

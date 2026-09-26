@@ -1,0 +1,27 @@
+# Secrets and credentials -- never bake these into an image layer.
+.env
+.env.*
+*.key
+*.pem
+keys/
+
+# Not needed at runtime.
+tests/
+__pycache__/
+*.pyc
+.pytest_cache/
+.gitignore
+docker-compose.yml
+docker-compose.yml.bak-*
+firmware/
+
+**/.env
+**/.env.*
+**/*.key
+**/*.pem
+**/*.crt
+**/*.cer
+**/*.der
+**/*.p12
+**/*.pfx
+**/build/

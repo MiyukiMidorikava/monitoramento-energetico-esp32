@@ -1,0 +1,32 @@
+idf_component_register(
+    SRCS
+        "main.c"
+        "app_init.c"
+        "telemetria.c"
+        "sensores_eletricos.c"
+        "sensores_ambiente.c"
+        "tempo.c"
+        "wifi_app.c"
+        "display.c"
+        "http_client_app.c"
+        "ota_app.c"
+        "tasks_app.c"
+        "shared_data.c"
+    INCLUDE_DIRS "."
+    REQUIRES
+        esp_driver_i2c
+        esp_driver_gpio
+        esp_driver_tsens
+        esp_adc
+        esp_wifi
+        esp_event
+        esp_netif
+        nvs_flash
+        esp_http_client
+        esp-tls
+        mbedtls
+        app_update
+        bootloader_support
+        json
+        esp_timer
+)

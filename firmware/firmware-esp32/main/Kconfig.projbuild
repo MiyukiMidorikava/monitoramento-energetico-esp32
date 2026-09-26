@@ -1,0 +1,37 @@
+menu "Monitor Energetico"
+
+config MONITOR_WIFI_SSID
+    string "Wi-Fi SSID"
+    default "SEU_SSID"
+    help
+        SSID da rede Wi-Fi usada pelo ESP32 para conectar ao backend.
+
+config MONITOR_WIFI_PASS
+    string "Wi-Fi Password"
+    default "SUA_SENHA"
+    help
+        Senha da rede Wi-Fi usada pelo ESP32.
+
+config MONITOR_FLASK_ENDPOINT_URL
+    string "Flask endpoint URL"
+    default "https://energia.example.invalid/telemetria"
+    help
+        URL completa do endpoint HTTP que recebe a telemetria.
+
+config MONITOR_API_TOKEN
+    string "Telemetry API token (X-API-Key)"
+    default ""
+    help
+        Use o mesmo valor de API_SECURITY_TOKEN do backend Flask.
+        Configure no sdkconfig local; nao publique o segredo no repositorio.
+
+config MONITOR_OTA_URL
+    string "OTA firmware URL"
+    default "https://energia.example.invalid/firmware/firmware.bin"
+
+config MONITOR_OTA_INTERVAL_SECONDS
+    int "Intervalo entre verificacoes OTA (segundos)"
+    range 30 86400
+    default 3600
+
+endmenu

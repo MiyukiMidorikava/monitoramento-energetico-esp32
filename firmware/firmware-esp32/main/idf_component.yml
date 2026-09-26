@@ -1,0 +1,6 @@
+dependencies:
+  idf:
+    version: "5.5.3"
+  esp-idf-lib/dht: "1.2.0"
+  espressif/ssd1306:
+    path: "../components/espressif__ssd1306"
